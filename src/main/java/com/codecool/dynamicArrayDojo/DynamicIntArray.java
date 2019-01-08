@@ -55,7 +55,30 @@ public class DynamicIntArray {
         return size;
     }
 
-    public void insert(int index){
+    public void insert(int index, int element){
+        updateCapacity(size + 1);
+
+        if(index < 0){
+            throw new IllegalArgumentException("Index must be equal to or higher than 0!");
+        }
+
+        int[] newArray = new int[size+1];
+
+        if(index > size){
+            index = data.length;
+            newArray = new int[size+2];
+        }
+
+        for(int i=0; i<index; i++){
+            newArray[i] = data[i];
+        }
+
+        for(int i=index; i < size; i++){
+            newArray[i+1] = data[i];
+        }
+        newArray[index] = element;
+        decreaseCapacity();
+        data = newArray;
     }
 
     private void updateCapacity(int minimumCapacity) {
