@@ -49,6 +49,12 @@ public class DynamicIntArray {
         }
     }
 
+    private void checkIfInBounds(int index) {
+        if(index < 0 || index >= size)
+            throw new ArrayIndexOutOfBoundsException("Invalid index: " + index + " size: " + size);
+
+    }
+
     /**This method is used to decrease visible capacity for toString method*/
     private void decreaseCapacity(){
         int currentCapacity = data.length;
