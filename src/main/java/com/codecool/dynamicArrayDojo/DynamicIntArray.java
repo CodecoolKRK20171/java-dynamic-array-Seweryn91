@@ -7,6 +7,7 @@ public class DynamicIntArray {
 
     private int size; //number of elements
     private int[] data; //array for storing elements
+    private int capacity;
 
 
     public DynamicIntArray(){
