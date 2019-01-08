@@ -28,7 +28,27 @@ public class DynamicIntArray {
     }
 
     public void remove(int index){
+        checkIfInBounds(index);
+        int[] newArray = new int[data.length-1];
+        if(index > 0){
+        
+            for(int i=0; i<index; i++){
+            newArray[i] = data[i];
+        }
 
+
+        for(int i=index; i<newArray.length; i++){
+            newArray[i] = data[i+1];
+            }
+        }else{
+
+            for(int i=1; i<data.length; i++){
+                newArray[i-1] = data[i];
+            }
+        }
+        
+        data = newArray;
+        size = newArray.length;
     }
 
     public int size(){
