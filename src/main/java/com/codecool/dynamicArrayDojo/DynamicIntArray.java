@@ -15,7 +15,7 @@ public class DynamicIntArray {
         size = 0;
     }
 
-    public DynamicIntArray(int size){
+    public DynamicIntArray(int capacity){
         if (capacity < 1){
             capacity = 1;}
         data = new int[capacity];
@@ -33,17 +33,17 @@ public class DynamicIntArray {
         int[] newArray = new int[data.length-1];
         if(index > 0){
         
-            for(int i=0; i<index; i++){
+            for(int i=0; i < index; i++){
             newArray[i] = data[i];
         }
 
 
-        for(int i=index; i<newArray.length; i++){
+        for(int i=index; i < newArray.length; i++){
             newArray[i] = data[i+1];
             }
         }else{
 
-            for(int i=1; i<data.length; i++){
+            for(int i=1; i < data.length; i++){
                 newArray[i-1] = data[i];
             }
         }
@@ -70,7 +70,7 @@ public class DynamicIntArray {
             newArray = new int[size+2];
         }
 
-        for(int i=0; i<index; i++){
+        for(int i=0; i < index; i++){
             newArray[i] = data[i];
         }
 
@@ -113,11 +113,12 @@ public class DynamicIntArray {
     /**this one looks bad, but...
      * ONE DOES NOT SIMPLY BLAME TESTS*/
     public String toString(){
-        //decreaseCapacity();
-        String raw = Arrays.toString(data);
-        String raw1 = raw.replaceAll("[\\[\\]]", " ");
-        String raw2 = raw1.replaceAll(",", "");
-        String output = raw2.substring(0,raw2.length()-1);
+        String output = "";
+
+        for(int i = 0; i < data.length; i++){
+            output += " " + data[i];
+        }
+
         return output;
     }
 
