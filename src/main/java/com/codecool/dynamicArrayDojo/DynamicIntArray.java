@@ -108,6 +108,16 @@ public class DynamicIntArray {
         }
     }
 
-
+    @Override
+    /**this one looks bad, but...
+     * ONE DOES NOT SIMPLY BLAME TESTS*/
+    public String toString(){
+        //decreaseCapacity();
+        String raw = Arrays.toString(data);
+        String raw1 = raw.replaceAll("[\\[\\]]", " ");
+        String raw2 = raw1.replaceAll(",", "");
+        String output = raw2.substring(0,raw2.length()-1);
+        return output;
+    }
 
 }
