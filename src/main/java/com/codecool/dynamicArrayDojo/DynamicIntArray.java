@@ -1,5 +1,7 @@
 package com.codecool.dynamicArrayDojo;
 
+import java.util.Arrays;
+
 // put your code here!
 public class DynamicIntArray {
 
@@ -19,11 +21,10 @@ public class DynamicIntArray {
         size = 0;
     }
 
-    public void createArray(int size){
-
-    }
-
-    public void add(int index){
+    public void add(int element){
+        updateCapacity(size + 1);
+        data[size++] = element;
+        decreaseCapacity();
     }
 
     public void remove(int index){
@@ -36,5 +37,28 @@ public class DynamicIntArray {
 
     public void insert(int index){
     }
+
+    private void updateCapacity(int minimumCapacity) {
+        int previousCapacity = data.length;
+
+        if (minimumCapacity > previousCapacity) {
+            int newCapacity = (previousCapacity * 2);
+            if (newCapacity < minimumCapacity)
+                newCapacity = minimumCapacity;
+            data = Arrays.copyOf(data, newCapacity);
+        }
+    }
+
+    /**This method is used to decrease visible capacity for toString method*/
+    private void decreaseCapacity(){
+        int currentCapacity = data.length;
+
+        if(currentCapacity > size){
+            int[] newArray = Arrays.copyOf(data, size);
+            data = newArray;
+        }
+    }
+
+
 
 }
