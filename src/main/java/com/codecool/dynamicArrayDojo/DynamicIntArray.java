@@ -1,7 +1,5 @@
 package com.codecool.dynamicArrayDojo;
 
-import java.util.Arrays;
-
 // put your code here!
 public class DynamicIntArray {
 
@@ -89,7 +87,11 @@ public class DynamicIntArray {
             int newCapacity = (previousCapacity * 2);
             if (newCapacity < minimumCapacity)
                 newCapacity = minimumCapacity;
-            data = Arrays.copyOf(data, newCapacity);
+
+            int[] newData = new int[minimumCapacity];
+
+            System.arraycopy(data, 0, newData, 0, previousCapacity);
+            data = newData;
         }
     }
 
@@ -104,8 +106,11 @@ public class DynamicIntArray {
         int currentCapacity = data.length;
 
         if(currentCapacity > size){
-            int[] newArray = Arrays.copyOf(data, size);
-            data = newArray;
+
+            int[] newData = new int[size];
+            System.arraycopy(data, 0, newData, 0, size);
+            data = newData;
+
         }
     }
 
